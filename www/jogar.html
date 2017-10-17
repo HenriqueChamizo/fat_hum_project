@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/mainGame.js"></script>
+</head>
+<body>
+
+
+<div id="hand1"></div>
+<h1 id="sinal"></h1>
+<div id="hand2"></div>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var h1v = (getRandomIntInclusive(1,5));
+		var h2v = (getRandomIntInclusive(1,5));
+		var hand1 = ('<img id="h1" src="img/hands/'+h1v+'.png"/>');
+		var hand2 = ('<img id="h2" src="img/hands/'+h2v+'.png"/>');
+		var signal = (getSignal())
+
+		$("#hand1").html(hand1);
+		$("#sinal").html(signal);
+		$("#hand2").html(hand2);
+
+
+		alert(getResult(h1v, h2v, signal))
+
+	})
+</script>
+
+</body>
+</html>
