@@ -1,3 +1,5 @@
+var score = 0;
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -18,18 +20,52 @@ function getResult(h1,h2,sig){
 	return eval(calc)
 }
 
-function getOptions(correct){
+function getOptions(hand1, hand2){
 	options = [];
-	min = Math.ceil(0);
-  	max = Math.floor(2);
 
-  	var a = correct + 2;
-  	var b = correct - 1;
-  	
-  	while((options[0] == undefined)&&(options[1] == undefined)&&(options[2] == undefined)){
-  		var r = Math.floor(Math.random() * (max - min + 1)) + min;
-  	}
+  var sum = hand1+hand2;
+  var sub = hand1-hand2;
+  var mul = hand1*hand2;
+  var div = hand1/hand2;
+  
+  options = setInOptions(sum, options);
+  options = setInOptions(sub, options);
+  options = setInOptions(mul, options);
+  options = setInOptions(div, options);
+  return options;
+}
 
+function setInOptions(result, options){
+  var ocup = true;
+  do{
+    var ind = getRandomIntInclusive(0, 3);
+    if (options[ind] != undefined){
+      ocup = true;
+    }
+    else{
+      ocup = false;
+      options[ind] = result; 
+    }
+  } while(ocup);
+
+  return options;
+}
+
+function start(){
+
+  var handOneValue = (getRandomIntInclusive(1,5));
+  var handTwoValue = (getRandomIntInclusive(1,5));
+  var signal = (getSignal());
+  var options = getOptions(handOneValue, handTwoValue);
+
+  var html = ('<ul class="handsGame"><li><img id="h1" src="img/hands/'+handOneValue+'.png"/></li><li>'+signal+'</li><li><img id="h2" src="img/hands/'+handTwoValue+'.png"/></li></ul>');
+
+  html += '<ul class="optionsGame">';
+  for (var i = 0; i < options.length; i++) {
+    html += '<li>'+options[i]+'</li>';
+  }
+  html += '</ul>'
+  return body = html;
 }
 
 

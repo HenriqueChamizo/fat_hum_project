@@ -2,35 +2,57 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/mainGame.js"></script>
 </head>
 <body>
 
+	<div class="app">
+		<div class="header">
+			<span class="esqinfo">
+				<span>SCORE:<span id="score"></span></span>
+			</span>
+			<span class="dirinfo">
+				<span>TEMPO:<span id="timer"></span></span>
+			</span>
+		</div>
+		<div id="main">
 
-<div id="hand1"></div>
-<h1 id="sinal"></h1>
-<div id="hand2"></div>
+		</div>
+	</div>
 
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var startTime = 5;
+			var endTime = 0;
+		 	var timer = startTime;
+			setInterval(function() {
+				if(timer <= endTime){
+			    	timer = 5;
+			    }
+			    if(timer == startTime){
+			    	score += 1;
+			    	$('#score').html(score)
+			    	$('#main').html(start())
+			    }
+			    timer = timer - 1;
+			    $('#timer').html(timer)
+			}, 1000);
 
+		})
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		var h1v = (getRandomIntInclusive(1,5));
-		var h2v = (getRandomIntInclusive(1,5));
-		var hand1 = ('<img id="h1" src="img/hands/'+h1v+'.png"/>');
-		var hand2 = ('<img id="h2" src="img/hands/'+h2v+'.png"/>');
-		var signal = (getSignal())
+		function clickOption(correto, valorClick){
+			if (correto == valorClick){
+		    	score += 1;
+		    	$('#score').html(score)
+		    	$('#main').html(start())
+			}
+			else{
 
-		$("#hand1").html(hand1);
-		$("#sinal").html(signal);
-		$("#hand2").html(hand2);
-
-
-		alert(getResult(h1v, h2v, signal))
-
-	})
-</script>
+			}
+		}
+	</script>
 
 </body>
 </html>
