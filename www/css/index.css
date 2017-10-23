@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: fonteGiz2;
-    src: url(../fonts/mr_chalk.wolff);
+    src: url(../fonts/mr_chalk.woff);
 }
 
 * {
@@ -172,8 +172,13 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-.gis2 {
+.giz2 {
     font-family: fonteGiz2;
-    font-size: 200px;
-    margin: 400px;
+}
+
+h1.giz2 {
+    font-size:300px;
+    font-weight:normal;
+    overflow:visible;
+    padding:0px;
 }
