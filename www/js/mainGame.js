@@ -14,6 +14,15 @@ function getSignal(){
   return signals[Math.floor(Math.random() * (max - min + 1)) + min];
 }
 
+function clickOption(op, h1, h2, sg){
+  result = getResult(h1,h2,sg)
+  if (op == result){
+    score += 10;
+    return true
+  }else{
+    return false
+  }
+}
 
 function getResult(h1,h2,sig){
 	var calc = ""+h1+sig+h2+""
@@ -62,7 +71,7 @@ function start(){
 
   html += '<ul class="optionsGame">';
   for (var i = 0; i < options.length; i++) {
-    html += '<li>'+options[i]+'</li>';
+    html += '<li onclick="clickOption('+options[i]+', '+handOneValue+','+handTwoValue+','+signal+')">'+options[i]+'</li>';
   }
   html += '</ul>'
   return body = html;

@@ -27,18 +27,19 @@
 			var startTime = 5;
 			var endTime = 0;
 		 	var timer = startTime;
-			setInterval(function() {
-				if(timer <= endTime){
-			    	timer = 5;
-			    }
-			    if(timer == startTime){
-			    	score += 1;
-			    	$('#score').html(score)
-			    	$('#main').html(start())
-			    }
-			    timer = timer - 1;
-			    $('#timer').html(timer)
-			}, 1000);
+		 	$('#main').html(start())
+			// setInterval(function() {
+			// 	if(timer <= endTime){
+			//     	timer = 5;
+			//     }
+			//     if(timer == startTime){
+			//     	score += 1;
+			//     	$('#score').html(score)
+			    	
+			//     }
+			//     timer = timer - 1;
+			//     $('#timer').html(timer)
+			// }, 1000);
 
 		})
 

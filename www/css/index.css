@@ -100,6 +100,18 @@ body {
 
 .handsGame li { display: inline; }
 
+
+.optionsGame {
+    margin-top: 40%;
+    list-style:none;
+}
+
+.optionsGame li { 
+    display: inline; 
+    border: 2px solid #fff;
+}
+
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
