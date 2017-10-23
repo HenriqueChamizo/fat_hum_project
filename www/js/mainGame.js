@@ -40,8 +40,8 @@ function getOptions(hand1, hand2){
   options = setInOptions(sum, options);
   options = setInOptions(sub, options);
   options = setInOptions(mul, options);
-  options = setInOptions(div, options);
-  return options;
+  options = setInOptions(div.toFixed(), options);
+  return verificationOptions(options);
 }
 
 function setInOptions(result, options){
@@ -60,6 +60,46 @@ function setInOptions(result, options){
   return options;
 }
 
+function verificationOptions(options){
+  var indice = -100;
+  var sugestao = -100;
+  var opRepeat = -100;
+  var exist = false;
+  for(var x = 0; x < options.length; x++){
+    var opX = options[x];
+    for(var y = 0; y < options.length; y++){
+      if (y != x){
+        if (opX == options[y]){
+          opRepeat = opX;
+          break;
+        }
+      }
+    }
+  }
+  if (opRepeat != -100){
+    do{
+      exist = false;
+      sugestao = getRandomIntInclusive(-5, 25);
+      for(var i = 0; i < options.length; i++){
+        exist = (options[i] == sugestao && 
+                sugestao != opRepeat);
+        if (exist){
+          break;
+        }
+        if (opRepeat == options[i]){
+          indice = i;
+          break;
+        }
+      }
+      if (indice != -100){
+        break;
+      }
+    } while (!exist);
+    options[indice] = sugestao;
+  }
+  return options;
+}
+
 function start(){
 
   var handOneValue = (getRandomIntInclusive(1,5));
@@ -71,7 +111,7 @@ function start(){
 
   html += '<ul class="optionsGame">';
   for (var i = 0; i < options.length; i++) {
-    html += '<li onclick="clickOption('+options[i]+', '+handOneValue+','+handTwoValue+','+signal+')">'+options[i]+'</li>';
+    html += '<li onclick="clickOption('+options[i]+', \''+handOneValue+'\',\''+handTwoValue+'\',\''+signal+'\')">'+options[i]+'</li>';
   }
   html += '</ul>'
   return body = html;
