@@ -16,6 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+@font-face {
+    font-family: fonteGiz;
+    src: url(../fonts/EraserRegular.ttf);
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -25,39 +31,74 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:'fonteGiz';
+    color: #FFFFFF;
     font-size:12px;
-    height:100%;
     margin:0px;
     padding:0px;
     text-transform:uppercase;
-    width:100%;
+    
 }
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    background:url('../img/background.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    left:0%;
+    top:0%;
+    height:100%;                   /* text area height */
+    width:100%;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    vertical-align: middle;
+
 }
+
+.tgame{
+    margin-top: 20%;
+    font-size: 5em;
+}
+
+
+.app a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.app ul{
+
+    list-style: none;
+    text-align: center;
+    font-size: 3em;
+}
+
+.app .header{
+    margin-top: 10%;
+    font-size: 3em;
+}
+
+.app .header .esqinfo{
+    position: absolute;
+    left: 8%;
+    top: 6%;
+}
+.app .header .dirinfo{
+    position: absolute;
+    right: 8%;
+    top: 6%;
+}
+
+
+.handsGame {
+    margin-top: 40%;
+    list-style:none;
+}
+
+.handsGame li { display: inline; }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
