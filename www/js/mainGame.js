@@ -18,9 +18,9 @@ function clickOption(op, h1, h2, sg){
   result = getResult(h1,h2,sg)
   if (op == result){
     score += 10;
-    return true
+    $('#main').html(start())
   }else{
-    return false
+    $('#main').html(game_over())
   }
 }
 
@@ -117,4 +117,22 @@ function start(){
   return body = html;
 }
 
+function game_over(){
+  var html = '';
+  html += '<div class="game_over">';
+  html += '<ul>';
+  html += '<li><h1>Game Over!</h1></li>';
+  html += '<li>Sua pontuação foi: <b>'+score+'</b></li>';
+  html += '<li>';
+  html += 'Você quer tentar de novo?';
+  html += '<ul>';
+  html += '<li><a href="index.html">Não</a></li>';
+  html += '<li><a href="jogar.html">Sim</a></li>';
+  html += '</ul>';
+  html += '</li>';
+  html += '</ul>';
+  html += '</div>';
+  return body = html;
+  // return ("game_over.txt")
+}
 
