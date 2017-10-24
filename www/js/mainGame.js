@@ -10,7 +10,6 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 function getSignal(){
   signals = ['+','-','/','*'];
   min = Math.ceil(0);
@@ -45,7 +44,7 @@ function getOptions(hand1, hand2){
   options = setInOptions(sub, options);
   options = setInOptions(mul, options);
   options = setInOptions(div.toFixed(1), options);
-  return verificationOptions(options);
+  return getVerificationOptions(options);
 }
 
 function setInOptions(result, options){
@@ -64,42 +63,36 @@ function setInOptions(result, options){
   return options;
 }
 
-function verificationOptions(options){
-  var indice = -100;
-  var sugestao = -100;
-  var opRepeat = -100;
-  var exist = false;
+function getOptionRepeat(options){
   for(var x = 0; x < options.length; x++){
-    var opX = options[x];
-    for(var y = 0; y < options.length; y++){
-      if (y != x){
-        if (opX == options[y]){
-          opRepeat = opX;
-          break;
-        }
+    for(var y = x + 1; y < options.length; y++){
+      if (options[x] == options[y]){
+        return x;
       }
     }
   }
-  if (opRepeat != -100){
-    do{
-      exist = false;
-      sugestao = getRandomIntInclusive(-5, 25);
-      for(var i = 0; i < options.length; i++){
-        exist = (options[i] == sugestao && 
-                sugestao != opRepeat);
-        if (exist){
-          break;
-        }
-        if (opRepeat == options[i]){
-          indice = i;
-          break;
-        }
-      }
-      if (indice != -100){
+  return -1;
+}
+
+function getIsOnOptions(suggestion, options){
+  for(var i = 0; i < options.length; i++){
+    if (options[i] == suggestion)
+      return true;
+  }
+  return false;
+}
+
+function getVerificationOptions(options){
+  var index = getOptionRepeat(options);
+
+  if (index != -1){
+    while (true){
+      var suggestion = getRandomIntInclusive(-5, 25);
+      if (!getIsOnOptions(suggestion, options)){
+        options[index] = suggestion;
         break;
       }
-    } while (!exist);
-    options[indice] = sugestao;
+    }
   }
   return options;
 }
@@ -118,7 +111,7 @@ function change_dificult(){
 
 function start(){
   change_dificult();
-  TIMER = START_TIME;
+  TIMER = START_TIME; 
   var handTwoValue = 0;
   var handOneValue = (getRandomIntInclusive(1,5));
   var signal = (getSignal());
