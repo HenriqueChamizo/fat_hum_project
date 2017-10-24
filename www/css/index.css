@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: fonteGiz2;
-    src: url(../fonts/mr_chalk.wolff);
+    src: url(../fonts/mr_chalk.woff);
 }
 
 * {
@@ -37,7 +37,7 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
     background-attachment:fixed;
-    font-family:'fonteGiz';
+    font-family:'fonteGiz2';
     color: #FFFFFF;
     font-size:12px;
     margin:0px;
@@ -64,6 +64,12 @@ body {
 
 }
 
+.menu{
+    margin-top:40%;
+    font-size: 9em;
+    text-decoration: underline;
+}
+
 .tgame{
     margin-top: 20%;
     font-size: 5em;
@@ -84,7 +90,7 @@ body {
 
 .app .header{
     margin-top: 10%;
-    font-size: 3em;
+    font-size: 5em;
 }
 
 .app .header .esqinfo{
@@ -100,21 +106,26 @@ body {
 
 
 .handsGame {
-    margin-top: 40%;
+    margin-top: 30%;
     list-style:none;
 }
 
-.handsGame li { display: inline; }
+.handsGame li { 
+    display: inline;
+    padding: 2%
+    font-size: 9em;
+     }
 
 
 .optionsGame {
-    margin-top: 40%;
+    margin-top: 25%;
     padding: 0px 8.8%;
     list-style: none;
 }
 
 .optionsGame li { 
-    border: 2px solid #fff;
+    border: 3px solid #fff;
+    border-radius: 9px;
     width: 22.2%;
     float: left;
     padding: 15px 0px 5px 0px;
@@ -122,6 +133,18 @@ body {
     font-size: 2.3em;
 }
 
+.game_over{
+    margin-top: 40%;
+    font-size: 1.5em;
+}
+
+.imgHands{
+    width: 30%;
+}
+
+.signalHands{
+    font-size: 9em;
+}
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {

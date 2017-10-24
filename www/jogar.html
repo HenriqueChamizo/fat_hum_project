@@ -11,35 +11,31 @@
 	<div class="app">
 		<div class="header">
 			<span class="esqinfo">
-				<span>SCORE:<span id="score"></span></span>
+				<span>SCORE:<span id="score">0</span></span>
 			</span>
 			<span class="dirinfo">
-				<span>TEMPO:<span id="timer"></span></span>
+				<span>TEMPO:<span id="timer">0</span></span>
 			</span>
 		</div>
 		<div id="main">
 
-		</div>
+		</div> 
 	</div>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var startTime = 5;
-			var endTime = 0;
-		 	var timer = startTime;
 		 	$('#main').html(start())
 			setInterval(function() {
-				if(timer <= endTime){
-			    	timer = 5;
+				if(TIMER <= END_TIME){
+			    	$('#main').html(game_over())
 			    }
-			    if(timer == startTime){
-			    	score += 1;
-			    	$('#score').html(score)
+			    if(TIMER == START_TIME){
+			    	$('#score').html(SCORE)
 			    	
 			    }
-			    timer = timer - 1;
-			    $('#timer').html(timer)
-			}, 1000);
+			    TIMER = TIMER - 1;
+			    $('#timer').html(TIMER)
+			}, RUNTIME);
 		});
 	</script>
 

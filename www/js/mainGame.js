@@ -1,4 +1,8 @@
-var score = 0;
+var SCORE = 0;
+var START_TIME = 6;
+var END_TIME = 0;
+var TIMER = START_TIME;
+var RUNTIME = 1000;
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -17,7 +21,7 @@ function getSignal(){
 function clickOption(op, h1, h2, sg){
   result = getResult(h1,h2,sg)
   if (op == result){
-    score += 10;
+    SCORE += 10;
     $('#main').html(start())
   }else{
     $('#main').html(game_over())
@@ -100,38 +104,64 @@ function verificationOptions(options){
   return options;
 }
 
-function start(){
+function change_dificult(){
+  if(SCORE > 30){
+    RUNTIME = 900;
+  }
+  if(SCORE > 50){
+    RUNTIME = 700;
+  }
+  if(SCORE > 80){
+    RUNTIME = 500;
+  }
+}
 
+function start(){
+  change_dificult();
+  TIMER = START_TIME;
   var handOneValue = (getRandomIntInclusive(1,5));
   var handTwoValue = (getRandomIntInclusive(1,5));
   var signal = (getSignal());
   var options = getOptions(handOneValue, handTwoValue);
 
-  var html = ('<ul class="handsGame"><li><img id="h1" src="img/hands/'+handOneValue+'.png"/></li><li>'+signal+'</li><li><img id="h2" src="img/hands/'+handTwoValue+'.png"/></li></ul>');
+  var html = ('<ul class="handsGame"><li><img class="imgHands" id="h1" src="img/hands/'+handOneValue+'.png"/></li><li class="signalHands">'+signal+'</li><li><img class="imgHands" id="h2" src="img/hands/'+handTwoValue+'.png"/></li></ul>');
 
   html += '<ul class="optionsGame">';
   for (var i = 0; i < options.length; i++) {
     html += '<li onclick="clickOption('+options[i]+', \''+handOneValue+'\',\''+handTwoValue+'\',\''+signal+'\')">'+options[i]+'</li>';
   }
   html += '</ul>'
+  html += '<script>showHeader()</script>'
   return body = html;
+}
+
+function hideHeader(){
+  $('.header').css("display", "none");
+}
+
+function showHeader(){
+  $('.header').css("display", "");
 }
 
 function game_over(){
   var html = '';
   html += '<div class="game_over">';
   html += '<ul>';
-  html += '<li><h1>Game Over!</h1></li>';
-  html += '<li>Sua pontuação foi: <b>'+score+'</b></li>';
+  html += '<li>Game Over!</li>';
+  html += '<li>Sua pontuacao foi: <b>'+SCORE+'</b></li>';
   html += '<li>';
-  html += 'Você quer tentar de novo?';
-  html += '<ul>';
-  html += '<li><a href="index.html">Não</a></li>';
+  html += 'Voce quer tentar de novo?';
+  html += '<ul style="margin-top: 8%">';
+  html += '<li><a href="index.html">Nao</a></li>';
   html += '<li><a href="jogar.html">Sim</a></li>';
   html += '</ul>';
   html += '</li>';
   html += '</ul>';
   html += '</div>';
+  html += '<script>hideHeader()</script>'
+
+  SCORE = 0;
+  TIMER = 999999;
   return body = html;
   // return ("game_over.txt")
 }
