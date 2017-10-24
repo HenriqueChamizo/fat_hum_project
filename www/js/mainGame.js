@@ -44,7 +44,7 @@ function getOptions(hand1, hand2){
   options = setInOptions(sum, options);
   options = setInOptions(sub, options);
   options = setInOptions(mul, options);
-  options = setInOptions(div.toFixed(), options);
+  options = setInOptions(div.toFixed(1), options);
   return verificationOptions(options);
 }
 
@@ -119,8 +119,16 @@ function change_dificult(){
 function start(){
   change_dificult();
   TIMER = START_TIME;
+  var handTwoValue = 0;
   var handOneValue = (getRandomIntInclusive(1,5));
-  var handTwoValue = (getRandomIntInclusive(1,5));
+  var signal = (getSignal());
+  if (signal == "/"){
+    do
+      handTwoValue = (getRandomIntInclusive(1,5));
+    while(handTwoValue < handOneValue); 
+  }else{
+    handTwoValue = (getRandomIntInclusive(1,5));
+  }
   var signal = (getSignal());
   var options = getOptions(handOneValue, handTwoValue);
 
