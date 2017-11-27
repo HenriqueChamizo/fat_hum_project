@@ -6,12 +6,12 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>helloworld</name>
+    <name>HANDSMATH</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        JOGO PARA INCENTIVAR AS CRIANCAS A PRATICAREM MATEMATICA.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        RONIFER, HENRIQUE, BRUNO, GUILHERME
     </author>
     <content src="index.html" />
     <access origin="*" />
